@@ -2,6 +2,14 @@
 
 An assembler for the Hack ASM language (part of [nand2tetris](https://nand2tetris.org)), programmed in OCaml.
 
+## Polymorphism
+
+You will notice that the types defined in `lib/ast.ml` are polymorphic. For example, the `inst` type is instantiated by another type, which is meant to represent virtual addresses. It is not hard-coded in the type that the address used in instructions be an integer, or a natural number. It can be any type!
+
+This is extremely useful, considering that this project is meant to be used for the JackVM to assembly translation, and for the Jack compiler.
+
+In those scenarios, it might be of interest to us to have addresses represented by, say, a sequence of identifiers. For example, a method `bar` of some class `foo` might correspond to an address that we can represent by a type that stores a list of such identifiers. So, not having restrictions on these types and making them polymorphic enables ease of maintenance and scaling.
+
 
 # File info
 
